@@ -28,8 +28,12 @@
 <body>
 
     <div id="root">
-
-        
+        <ul>
+            <li v-for="item in shoplist" v-text="item"></li>
+        </ul>
+       
+        <input id="inputItem" type="text" v-model="newItem">
+        <button id="btn" v-on:click="addItem">Add item</button>
 
     </div>
 
@@ -37,11 +41,32 @@
         //Vue instance
         let app = new Vue({
             el: '#root',
-
+            
             data: {
+                newItem:"",
+                shoplist:['Salad','Eggs','Apples','Chiken']
                 
+            },
+
+            methods:{
+                addItem(){
+                    this.shoplist.push(this.newItem);
+                    this.newItem=' ';
+                }
             }
-        })
+            // mounted(){
+            // document.querySelector('#btn').addEventListener('click', () => {
+            // let item = document.querySelector("#inputItem");
+            // app.shoplist.push(item.value);
+            // item.value='';
+            // })
+        
+
+        
+        });
+ 
+
+        
     </script>
     
 </body>
